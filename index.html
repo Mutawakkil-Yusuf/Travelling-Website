@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="The Road — small-group expedition tours across forest, river and coast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css" />
+  <link rel="shortcut icon" href="img/ballon-removebg-preview.png">
+  <title>The Road — Small-Group Expedition Tours</title>
+</head>
+
+<body>
+
+  <!-- Route rail (signature element): traces scroll progress like a paper map route -->
+  <nav class="route-rail" aria-label="Page sections">
+    <svg class="route-rail-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="1" y1="0" x2="1" y2="100" class="route-rail-track" />
+      <line x1="1" y1="0" x2="1" y2="0" class="route-rail-fill" />
+    </svg>
+    <a href="#home" class="route-stop" data-target="home"><span class="route-stop-dot"></span><span class="route-stop-label">01 · Home</span></a>
+    <a href="#offer" class="route-stop" data-target="offer"><span class="route-stop-dot"></span><span class="route-stop-label">02 · Routes</span></a>
+    <a href="#stories" class="route-stop" data-target="stories"><span class="route-stop-dot"></span><span class="route-stop-label">03 · Journals</span></a>
+    <a href="#contact" class="route-stop" data-target="contact"><span class="route-stop-dot"></span><span class="route-stop-label">04 · Contact</span></a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Navbar -->
+    <button class="open-navbar-icon navbar-icon center" aria-label="Open menu">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+
+    <div class="navbar-wrapper">
+      <nav class="navbar">
+        <button class="close-navbar-icon navbar-icon center" aria-label="Close menu">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+        </button>
+        <p class="navbar-eyebrow">Where to next</p>
+        <div class="nav-list">
+          <a href="#home" class="nav-link"><span class="nav-index">01</span>Home</a>
+          <a href="#offer" class="nav-link"><span class="nav-index">02</span>Routes</a>
+          <a href="#stories" class="nav-link"><span class="nav-index">03</span>Journals</a>
+          <a href="#contact" class="nav-link"><span class="nav-index">04</span>Contact</a>
+        </div>
+        <p class="navbar-coords">36.75° N · 3.06° E</p>
+      </nav>
+    </div>
+    <!-- End of Navbar -->
+
+    <!-- Header -->
+    <header id="home" class="header">
+      <div class="header-media">
+        <img src="img/sky.jpeg" alt="" class="header-bg" />
+      </div>
+      <p class="header-eyebrow reveal">Est. 2022 — small-group expeditions</p>
+      <h1 class="heading reveal">Around<br>the world</h1>
+      <p class="header-paragraph reveal">
+        Traveling leaves you speechless, then turns you into a storyteller.
+      </p>
+      <a href="#offer" class="header-cta reveal">
+        <span>See the routes</span>
+        <span class="header-cta-arrow" aria-hidden="true">↓</span>
+      </a>
+      <img src="img/ballon-removebg-preview.png" alt="" class="header-image" />
+      <div class="wordmark" aria-hidden="true">
+        <span>t</span><span>h</span><span>e</span><span>r</span><span>o</span><span>a</span><span>d</span>
+      </div>
+    </header>
+    <!-- End of Header -->
+
+    <!-- Popular tours -->
+    <section id="offer" class="popular-tours">
+      <p class="section-eyebrow reveal">02 · Routes</p>
+      <h2 class="popular-tours-heading reveal">Three ways to leave<br>the usual behind</h2>
+
+      <div class="cards-wrapper">
+
+        <article class="card reveal">
+          <div class="card-media">
+            <img src="img/red.jpeg" alt="Dense wild forest canopy" class="card-image">
+            <span class="card-tag">Difficulty · Medium</span>
+          </div>
+          <div class="card-body">
+            <p class="card-coords">36.40° N, 6.61° E</p>
+            <h3 class="tour-name">The Wild Forest</h3>
+            <ul class="card-list">
+              <li><span>Duration</span><span>7 days</span></li>
+              <li><span>Group size</span><span>Up to 20</span></li>
+              <li><span>Guides</span><span>4 on trail</span></li>
+              <li><span>Sleep</span><span>Private tents</span></li>
+            </ul>
+            <div class="card-footer">
+              <span class="tour-price"><span class="tour-price-amount">1,500</span> DA</span>
+              <button class="card-button">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media">
+            <img src="img/amazon.jpeg" alt="River winding through dense jungle" class="card-image">
+            <span class="card-tag">Difficulty · Hard</span>
+          </div>
+          <div class="card-body">
+            <p class="card-coords">3.13° S, 60.02° W</p>
+            <h3 class="tour-name">Along the River</h3>
+            <ul class="card-list">
+              <li><span>Duration</span><span>9 days</span></li>
+              <li><span>Group size</span><span>Up to 30</span></li>
+              <li><span>Guides</span><span>7 on trail</span></li>
+              <li><span>Sleep</span><span>Private tents</span></li>
+            </ul>
+            <div class="card-footer">
+              <span class="tour-price"><span class="tour-price-amount">2,000</span> DA</span>
+              <button class="card-button">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media">
+            <img src="img/beach.jpeg" alt="Quiet island beach at golden hour" class="card-image">
+            <span class="card-tag">Difficulty · Easy</span>
+          </div>
+          <div class="card-body">
+            <p class="card-coords">-8.65° S, 115.13° E</p>
+            <h3 class="tour-name">The Island Beach</h3>
+            <ul class="card-list">
+              <li><span>Duration</span><span>5 days</span></li>
+              <li><span>Group size</span><span>Up to 40</span></li>
+              <li><span>Guides</span><span>8 on trail</span></li>
+              <li><span>Sleep</span><span>Hotel stay</span></li>
+            </ul>
+            <div class="card-footer">
+              <span class="tour-price"><span class="tour-price-amount">1,000</span> DA</span>
+              <button class="card-button">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- End of popular tours -->
+
+    <!-- Stories -->
+    <section id="stories" class="stories">
+      <div class="video-container">
+        <video class="bg-video" autoplay muted loop playsinline>
+          <source src="img/video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <p class="section-eyebrow reveal light">03 · Journals</p>
+      <h2 class="stories-heading reveal light">Notes from the trail</h2>
+
+      <div class="stories-wrapper">
+        <figure class="story reveal">
+          <img src="img/person.jpeg" alt="Traveler portrait" class="story-image">
+          <blockquote class="story-text">
+            <span class="story-mark" aria-hidden="true">“</span>
+            <p class="story-heading">These were the best days of this year</p>
+            <p class="story-paragraph">The wild forest route earned every blister. Our guide knew the
+              canopy like a second language, and by the third night the whole group had stopped
+              checking their phones for signal and started checking the sky instead.</p>
+            <cite class="story-cite">— Amel, Wild Forest route</cite>
+          </blockquote>
+        </figure>
+
+        <figure class="story story-alt reveal">
+          <img src="img/person-2.jpeg" alt="Traveler portrait" class="story-image">
+          <blockquote class="story-text">
+            <span class="story-mark" aria-hidden="true">“</span>
+            <p class="story-heading">I enjoyed this great tour</p>
+            <p class="story-paragraph">Nine days on the river and I still think about the mornings,
+              mist over the water, coffee before anyone spoke, and a guide who timed every stop to
+              the light. Already looking at the beach route for next year.</p>
+            <cite class="story-cite">— Karim, Along the River route</cite>
+          </blockquote>
+        </figure>
+      </div>
+    </section>
+    <!-- End of stories -->
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <p class="section-eyebrow reveal light">04 · Contact</p>
+      <h2 class="contact-heading reveal light">Plan your route</h2>
+      <p class="contact-subheading reveal light">Tell us where you're starting from and we'll map the rest.</p>
+
+      <form class="contact-form reveal">
+        <div class="input-group">
+          <label for="name">Full name *</label>
+          <input id="name" type="text" class="contact-input" placeholder="Enter your name" required>
+        </div>
+        <div class="input-groups">
+          <div class="input-group">
+            <label for="email">Email *</label>
+            <input id="email" type="email" class="contact-input" placeholder="Enter your email" required>
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input id="phone" type="text" class="contact-input" placeholder="Enter phone number">
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" class="form-textarea" placeholder="Tell us about the trip you're picturing..."></textarea>
+        </div>
+        <button type="submit" class="form-btn">Send message</button>
+      </form>
+    </section>
+    <!-- End of contact -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="wordmark footer-wordmark" aria-hidden="true">
+          <span>t</span><span>h</span><span>e</span><span>r</span><span>o</span><span>a</span><span>d</span>
+        </div>
+        <div class="footer-list">
+          <a href="#home" class="footer-link">Home</a>
+          <a href="#offer" class="footer-link">Routes</a>
+          <a href="#stories" class="footer-link">Journals</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <p class="footer-paragraph">Copyright &copy; Mutawakkil — All Rights Reserved</p>
+    </footer>
+    <!-- End of footer -->
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
