@@ -35,6 +35,9 @@ aviora/
 │   └── video
 ├── README.md
 
+Preview:
+https://aviora-travell.netlify.app
+
 🚀 Getting Started
 
 Clone the repository:
