@@ -964,6 +964,16 @@ button {
   letter-spacing: 0.05em;
   margin-top: 3rem;
 }
+.footer-paragraph a {
+  color: var(--brass-light);
+  text-decoration: none;
+  border-bottom: 0.1rem solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+.footer-paragraph a:hover {
+  color: var(--brass);
+  border-bottom-color: var(--brass);
+}
 
 @media (max-width: 50em) {
   .footer { padding: 4rem 2.4rem 2.4rem; }
