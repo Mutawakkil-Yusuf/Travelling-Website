@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THE ROAD — design tokens
+   AVIORA — design tokens
    Palette:  ink #14201C · paper #F4EFE3 · brass #B9873B · moss #4B5A45 · rust #9C4A34
    Type:     Fraunces (display) · Inter (body) · Space Mono (coordinates / labels)
    Signature: the route rail — a scroll-traced map line with waypoint stops
@@ -152,10 +152,10 @@ button {
   transform: translateY(-50%);
 }
 
-.route-stop:nth-child(2) { top: 10%; }
-.route-stop:nth-child(3) { top: 38%; }
-.route-stop:nth-child(4) { top: 66%; }
-.route-stop:nth-child(5) { top: 92%; }
+.route-stop:nth-child(2) { top: 22%; }
+.route-stop:nth-child(3) { top: 45%; }
+.route-stop:nth-child(4) { top: 68%; }
+.route-stop:nth-child(5) { top: 91%; }
 
 .route-stop-dot {
   width: 1.1rem;
@@ -469,7 +469,7 @@ button {
 .wordmark {
   position: absolute;
   z-index: 2;
-  top: 4rem;
+  bottom: 4rem;
   left: 4rem;
   display: flex;
   gap: 0.4rem;
@@ -494,6 +494,8 @@ button {
   .heading { font-size: 6rem; }
   .header-paragraph { font-size: 1.8rem; }
   .header-image { width: 42%; right: 2%; bottom: 4%; opacity: 0.5; }
+  .wordmark { bottom: 2.5rem; left: 2.5rem; gap: 0.3rem; }
+  .wordmark span { width: 2.4rem; height: 2.4rem; font-size: 1.1rem; }
 }
 
 /* ==========================================================================

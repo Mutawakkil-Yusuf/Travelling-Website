@@ -1,4 +1,4 @@
-// The Road — interaction layer
+// AVIORA — interaction layer
 // 1. Mobile / slide-in menu toggle
 // 2. Scroll-reveal for elements marked .reveal
 // 3. Route rail: fills like a traced map line as the page scrolls,

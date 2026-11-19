@@ -1,85 +1,73 @@
-AVIORA 🌍
+# AVIORA 🌍
 
-Discover places. Plan journeys. Go further.
+**Discover places. Plan journeys. Go further.**
 
-aviora is a modern travel website designed to make discovering beautiful destinations feel simple, inspiring, and effortless.
+AVIORA is a single page travel website built to make discovering destinations feel simple, inspiring, and effortless. It combines editorial photography, warm typography, and small interactions into a calm, immersive travel experience.
 
-The project combines a clean visual experience with responsive design and interactive frontend functionality to create an immersive travel experience across devices.
+## Features
 
-✨ Features
+- Immersive full screen hero with drifting artwork
+- A route rail that traces reading progress like a map route
+- Three curated expedition routes with practical trip details
+- Journals section with background video and traveller stories
+- Working contact form layout with validation ready markup
+- Responsive across mobile, tablet, and desktop
+- Reduced motion support
 
-- 🌍 Explore beautiful travel destinations
-- 🖼️ Immersive destination imagery
-- 📱 Responsive design for mobile, tablet, and desktop
-- ⚡ Interactive frontend experience
-- 🎨 Clean and modern visual design
-- 🧭 Travel-focused navigation and content
-- 🎥 Rich visual media and destination sections
+## Built with
 
-🛠️ Built With
+Plain **HTML5**, **CSS3**, and **JavaScript**. No framework, no build step, no dependencies.
 
-- HTML5 — semantic structure
-- CSS3 — styling, layout, and responsive design
-- JavaScript — interactions and dynamic behaviour
+## Structure
 
-No frontend framework is required. Voya is built with the fundamentals of the web.
-
-📁 Project Structure
-
+```
 aviora/
 ├── index.html
 ├── app.css
 ├── app.js
 ├── img/
-│   ├── images
-│   └── video
-├── README.md
+│   └── images and background video
+└── netlify.toml
+```
 
-Preview:
+## Preview
+
 https://aviora-travell.netlify.app
 
-🚀 Getting Started
+## Getting started
 
-Clone the repository:
+Clone the repository and open `index.html` in a browser. No install required.
 
+```bash
 git clone https://github.com/Mutawakkil-Yusuf/Travelling-Website.git
-
-Navigate into the project:
-
 cd Travelling-Website
+```
 
-Then open "index.html" in your browser.
+To serve locally with correct asset paths:
 
-No build process or package installation is required.
+```bash
+python3 -m http.server 8000
+```
 
-🎯 Purpose
+Then open `http://localhost:8000`.
 
-Voya was created as a frontend project to explore how thoughtful visual design, responsive layouts, imagery, and JavaScript interactions can come together to create a polished digital travel experience.
+## Purpose
 
-🔮 Future Improvements
+AVIORA was built to explore how thoughtful visual design, responsive layouts, imagery, and small JavaScript interactions can come together into a polished digital travel experience using only the fundamentals of the web.
 
-Possible future iterations could include:
+## Future improvements
 
 - Destination search and filtering
 - Interactive maps
-- Trip planning
-- User accounts
-- Saved destinations
-- Travel recommendations
-- Backend integration
-- Real-time travel information
+- Working reservation flow
+- Saved destinations and user accounts
+- Backend integration for enquiries
+- Real time travel information
 
+## Author
 
-👨‍💻 Author
+Mutawakkil Yusuf (Ameer) — Full-Stack Developer & Product Builder
 
-Mutawakkil Yusuf (Ameer)
+GitHub: [@Mutawakkil-Yusuf](https://github.com/Mutawakkil-Yusuf)
 
-Full-Stack Developer & Product Builder
-
-- GitHub: "@Mutawakkil-Yusuf" (https://github.com/Mutawakkil-Yusuf)
-
-
-
-🌍 AVIORA
-
-Your next journey starts here.
+🌍 AVIORA — your next journey starts here.
