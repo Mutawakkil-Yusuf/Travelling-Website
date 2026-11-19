@@ -1,248 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#070b10" />
   <meta name="description" content="AVIORA — discover beautiful destinations, plan journeys and go further with small-group expedition tours." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="app.css" />
-  <link rel="shortcut icon" href="img/ballon-removebg-preview.png">
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <meta property="og:title" content="AVIORA — Discover Places. Plan Journeys. Go Further." />
+  <meta property="og:description" content="Small-group expedition tours across forest, river and coast." />
+  <meta property="og:image" content="https://aviora-travell.netlify.app/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>AVIORA — Discover Places. Plan Journeys. Go Further.</title>
 </head>
-
 <body>
 
-  <!-- Route rail (signature element): traces scroll progress like a paper map route -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark"><span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span></div>
+    <p class="loader__text">Charting your course</p>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
   <nav class="route-rail" aria-label="Page sections">
     <svg class="route-rail-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
       <line x1="1" y1="0" x2="1" y2="100" class="route-rail-track" />
-      <line x1="1" y1="0" x2="1" y2="0" class="route-rail-fill" />
+      <line x1="1" y1="0" x2="1" y2="0" class="route-rail-fill" id="railFill" />
     </svg>
-    <a href="#home" class="route-stop" data-target="home"><span class="route-stop-dot"></span><span class="route-stop-label">01 · Home</span></a>
+    <a href="#home" class="route-stop is-active" data-target="home"><span class="route-stop-dot"></span><span class="route-stop-label">01 · Home</span></a>
     <a href="#offer" class="route-stop" data-target="offer"><span class="route-stop-dot"></span><span class="route-stop-label">02 · Routes</span></a>
     <a href="#stories" class="route-stop" data-target="stories"><span class="route-stop-dot"></span><span class="route-stop-label">03 · Journals</span></a>
     <a href="#contact" class="route-stop" data-target="contact"><span class="route-stop-dot"></span><span class="route-stop-label">04 · Contact</span></a>
   </nav>
 
-  <div class="container">
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
 
-    <!-- Navbar -->
-    <button class="open-navbar-icon navbar-icon center" aria-label="Open menu">
-      <span class="line"></span>
-      <span class="line"></span>
-      <span class="line"></span>
-    </button>
+  <div class="menu-panel" id="menuPanel" aria-hidden="true">
+    <p class="mono label">Where to next</p>
+    <nav>
+      <a href="#home"><span>01</span>Home</a>
+      <a href="#offer"><span>02</span>Routes</a>
+      <a href="#stories"><span>03</span>Journals</a>
+      <a href="#contact"><span>04</span>Contact</a>
+    </nav>
+    <p class="mono coords">36.75° N · 3.06° E</p>
+  </div>
 
-    <div class="navbar-wrapper">
-      <nav class="navbar">
-        <button class="close-navbar-icon navbar-icon center" aria-label="Close menu">
-          <span class="line line-1"></span>
-          <span class="line line-2"></span>
-        </button>
-        <p class="navbar-eyebrow">Where to next</p>
-        <div class="nav-list">
-          <a href="#home" class="nav-link"><span class="nav-index">01</span>Home</a>
-          <a href="#offer" class="nav-link"><span class="nav-index">02</span>Routes</a>
-          <a href="#stories" class="nav-link"><span class="nav-index">03</span>Journals</a>
-          <a href="#contact" class="nav-link"><span class="nav-index">04</span>Contact</a>
-        </div>
-        <p class="navbar-coords">36.75° N · 3.06° E</p>
-      </nav>
-    </div>
-    <!-- End of Navbar -->
-
-    <!-- Header -->
-    <header id="home" class="header">
-      <div class="header-media">
-        <img src="img/sky.jpeg" alt="" class="header-bg" />
+  <main>
+    <header id="home" class="hero">
+      <div class="hero__media" data-parallax="0.18">
+        <img src="img/sky.jpeg" alt="" class="hero__bg" />
       </div>
-      <p class="header-eyebrow reveal">Est. 2022 — small-group expeditions</p>
-      <h1 class="heading reveal">Around<br>the world</h1>
-      <p class="header-paragraph reveal">
-        Traveling leaves you speechless, then turns you into a storyteller.
-      </p>
-      <a href="#offer" class="header-cta reveal">
-        <span>See the routes</span>
-        <span class="header-cta-arrow" aria-hidden="true">↓</span>
-      </a>
-      <img src="img/ballon-removebg-preview.png" alt="" class="header-image" />
+      <div class="hero__aurora" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="eyebrow reveal">Est. 2022 — small-group expeditions</p>
+        <h1 class="hero__title">
+          <span class="mask"><span class="mask__inner">Around</span></span>
+          <span class="mask"><span class="mask__inner">the world</span></span>
+        </h1>
+        <p class="hero__copy reveal">Traveling leaves you speechless, then turns you into a storyteller.</p>
+        <a href="#offer" class="cta magnetic reveal" data-spark><span>See the routes</span><span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="hero__balloon" data-parallax="-0.32" aria-hidden="true">
+        <img src="img/ballon-removebg-preview.png" alt="" />
+      </div>
+
       <div class="wordmark" aria-hidden="true">
         <span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span>
       </div>
+      <a href="#offer" class="hero__scroll mono">Scroll to explore <span aria-hidden="true">↓</span></a>
     </header>
-    <!-- End of Header -->
 
-    <!-- Popular tours -->
-    <section id="offer" class="popular-tours">
-      <p class="section-eyebrow reveal">02 · Routes</p>
-      <h2 class="popular-tours-heading reveal">Three ways to leave<br>the usual behind</h2>
+    <section id="offer" class="routes">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 · Routes</p>
+        <h2>Three ways to leave<br>the usual behind</h2>
+      </div>
 
-      <div class="cards-wrapper">
+      <div class="filters reveal" role="group" aria-label="Filter routes">
+        <button class="filter is-active" data-filter="all">All routes</button>
+        <button class="filter" data-filter="forest">Forest</button>
+        <button class="filter" data-filter="river">River</button>
+        <button class="filter" data-filter="beach">Beach</button>
+      </div>
 
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="img/red.jpeg" alt="Dense wild forest canopy" class="card-image">
-            <span class="card-tag">Difficulty · Medium</span>
+      <div class="cards">
+        <article class="card reveal" data-category="forest">
+          <div class="card__media">
+            <img src="img/red.jpeg" alt="Dense wild forest canopy" />
+            <span class="card__tag">Difficulty · Medium</span>
           </div>
-          <div class="card-body">
-            <p class="card-coords">36.40° N, 6.61° E</p>
-            <h3 class="tour-name">The Wild Forest</h3>
-            <ul class="card-list">
-              <li><span>Duration</span><span>7 days</span></li>
-              <li><span>Group size</span><span>Up to 20</span></li>
-              <li><span>Guides</span><span>4 on trail</span></li>
-              <li><span>Sleep</span><span>Private tents</span></li>
-            </ul>
-            <div class="card-footer">
-              <span class="tour-price"><span class="tour-price-amount">1,500</span> DA</span>
-              <button class="card-button">Reserve</button>
+          <div class="card__body">
+            <p class="mono card__coords">36.40° N, 6.61° E</p>
+            <h3>The Wild Forest</h3>
+            <dl class="card__facts">
+              <div><dt>Duration</dt><dd>7 days</dd></div>
+              <div><dt>Group size</dt><dd>Up to 20</dd></div>
+              <div><dt>Guides</dt><dd>4 on trail</dd></div>
+              <div><dt>Sleep</dt><dd>Private tents</dd></div>
+            </dl>
+            <div class="card__footer">
+              <p class="card__price"><span>1,500</span> DA</p>
+              <button class="card__reserve magnetic" data-route="The Wild Forest" data-spark>Reserve</button>
             </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="img/amazon.jpeg" alt="River winding through dense jungle" class="card-image">
-            <span class="card-tag">Difficulty · Hard</span>
+        <article class="card reveal" data-category="river">
+          <div class="card__media">
+            <img src="img/amazon.jpeg" alt="River winding through dense jungle" />
+            <span class="card__tag">Difficulty · Hard</span>
           </div>
-          <div class="card-body">
-            <p class="card-coords">3.13° S, 60.02° W</p>
-            <h3 class="tour-name">Along the River</h3>
-            <ul class="card-list">
-              <li><span>Duration</span><span>9 days</span></li>
-              <li><span>Group size</span><span>Up to 30</span></li>
-              <li><span>Guides</span><span>7 on trail</span></li>
-              <li><span>Sleep</span><span>Private tents</span></li>
-            </ul>
-            <div class="card-footer">
-              <span class="tour-price"><span class="tour-price-amount">2,000</span> DA</span>
-              <button class="card-button">Reserve</button>
+          <div class="card__body">
+            <p class="mono card__coords">3.13° S, 60.02° W</p>
+            <h3>Along the River</h3>
+            <dl class="card__facts">
+              <div><dt>Duration</dt><dd>9 days</dd></div>
+              <div><dt>Group size</dt><dd>Up to 30</dd></div>
+              <div><dt>Guides</dt><dd>7 on trail</dd></div>
+              <div><dt>Sleep</dt><dd>Private tents</dd></div>
+            </dl>
+            <div class="card__footer">
+              <p class="card__price"><span>2,000</span> DA</p>
+              <button class="card__reserve magnetic" data-route="Along the River" data-spark>Reserve</button>
             </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="img/beach.jpeg" alt="Quiet island beach at golden hour" class="card-image">
-            <span class="card-tag">Difficulty · Easy</span>
+        <article class="card reveal" data-category="beach">
+          <div class="card__media">
+            <img src="img/beach.jpeg" alt="Quiet island beach at golden hour" />
+            <span class="card__tag">Difficulty · Easy</span>
           </div>
-          <div class="card-body">
-            <p class="card-coords">-8.65° S, 115.13° E</p>
-            <h3 class="tour-name">The Island Beach</h3>
-            <ul class="card-list">
-              <li><span>Duration</span><span>5 days</span></li>
-              <li><span>Group size</span><span>Up to 40</span></li>
-              <li><span>Guides</span><span>8 on trail</span></li>
-              <li><span>Sleep</span><span>Hotel stay</span></li>
-            </ul>
-            <div class="card-footer">
-              <span class="tour-price"><span class="tour-price-amount">1,000</span> DA</span>
-              <button class="card-button">Reserve</button>
+          <div class="card__body">
+            <p class="mono card__coords">-8.65° S, 115.13° E</p>
+            <h3>The Island Beach</h3>
+            <dl class="card__facts">
+              <div><dt>Duration</dt><dd>5 days</dd></div>
+              <div><dt>Group size</dt><dd>Up to 40</dd></div>
+              <div><dt>Guides</dt><dd>8 on trail</dd></div>
+              <div><dt>Sleep</dt><dd>Hotel stay</dd></div>
+            </dl>
+            <div class="card__footer">
+              <p class="card__price"><span>1,000</span> DA</p>
+              <button class="card__reserve magnetic" data-route="The Island Beach" data-spark>Reserve</button>
             </div>
           </div>
         </article>
-
       </div>
     </section>
-    <!-- End of popular tours -->
 
-    <!-- Stories -->
     <section id="stories" class="stories">
-      <div class="video-container">
-        <video class="bg-video" autoplay muted loop playsinline>
-          <source src="img/video.mp4" type="video/mp4">
-        </video>
+      <div class="stories__media"><video autoplay muted loop playsinline><source src="img/video.mp4" type="video/mp4"></video></div>
+      <div class="stories__veil" aria-hidden="true"></div>
+      <div class="section-head section-head--light reveal">
+        <p class="eyebrow">03 · Journals</p>
+        <h2>Notes from the trail</h2>
       </div>
-
-      <p class="section-eyebrow reveal light">03 · Journals</p>
-      <h2 class="stories-heading reveal light">Notes from the trail</h2>
-
-      <div class="stories-wrapper">
+      <div class="stories__wrap">
         <figure class="story reveal">
-          <img src="img/person.jpeg" alt="Traveler portrait" class="story-image">
-          <blockquote class="story-text">
-            <span class="story-mark" aria-hidden="true">“</span>
-            <p class="story-heading">These were the best days of this year</p>
-            <p class="story-paragraph">The wild forest route earned every blister. Our guide knew the
-              canopy like a second language, and by the third night the whole group had stopped
-              checking their phones for signal and started checking the sky instead.</p>
-            <cite class="story-cite">— Amel, Wild Forest route</cite>
+          <img src="img/person.jpeg" alt="Traveler portrait" />
+          <blockquote>
+            <span aria-hidden="true">“</span>
+            <h3>These were the best days of this year</h3>
+            <p>The wild forest route earned every blister. Our guide knew the canopy like a second language, and by the third night the whole group had stopped checking their phones for signal and started checking the sky instead.</p>
+            <cite>— Amel, Wild Forest route</cite>
           </blockquote>
         </figure>
-
-        <figure class="story story-alt reveal">
-          <img src="img/person-2.jpeg" alt="Traveler portrait" class="story-image">
-          <blockquote class="story-text">
-            <span class="story-mark" aria-hidden="true">“</span>
-            <p class="story-heading">I enjoyed this great tour</p>
-            <p class="story-paragraph">Nine days on the river and I still think about the mornings,
-              mist over the water, coffee before anyone spoke, and a guide who timed every stop to
-              the light. Already looking at the beach route for next year.</p>
-            <cite class="story-cite">— Karim, Along the River route</cite>
+        <figure class="story story--alt reveal">
+          <img src="img/person-2.jpeg" alt="Traveler portrait" />
+          <blockquote>
+            <span aria-hidden="true">“</span>
+            <h3>I enjoyed this great tour</h3>
+            <p>Nine days on the river and I still think about the mornings, mist over the water, coffee before anyone spoke, and a guide who timed every stop to the light. Already looking at the beach route for next year.</p>
+            <cite>— Karim, Along the River route</cite>
           </blockquote>
         </figure>
       </div>
     </section>
-    <!-- End of stories -->
 
-    <!-- Contact -->
     <section id="contact" class="contact">
-      <p class="section-eyebrow reveal light">04 · Contact</p>
-      <h2 class="contact-heading reveal light">Plan your route</h2>
-      <p class="contact-subheading reveal light">Tell us where you're starting from and we'll map the rest.</p>
-
-      <form class="contact-form reveal">
-        <div class="input-group">
-          <label for="name">Full name *</label>
-          <input id="name" type="text" class="contact-input" placeholder="Enter your name" required>
+      <div class="section-head section-head--light reveal">
+        <p class="eyebrow">04 · Contact</p>
+        <h2>Plan your route</h2>
+        <p class="contact__intro">Tell us where you're starting from and we'll map the rest.</p>
+      </div>
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <label>Full name *<input type="text" name="name" placeholder="Enter your name" required></label>
+        <div class="form-row">
+          <label>Email *<input type="email" name="email" placeholder="Enter your email" required></label>
+          <label>Phone<input type="text" name="phone" placeholder="Enter phone number"></label>
         </div>
-        <div class="input-groups">
-          <div class="input-group">
-            <label for="email">Email *</label>
-            <input id="email" type="email" class="contact-input" placeholder="Enter your email" required>
-          </div>
-          <div class="input-group">
-            <label for="phone">Phone</label>
-            <input id="phone" type="text" class="contact-input" placeholder="Enter phone number">
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="message">Message</label>
-          <textarea id="message" class="form-textarea" placeholder="Tell us about the trip you're picturing..."></textarea>
-        </div>
-        <button type="submit" class="form-btn">Send message</button>
+        <label>Message<textarea name="message" placeholder="Tell us about the trip you're picturing..."></textarea></label>
+        <button type="submit" class="cta magnetic" data-spark><span>Send message</span><span aria-hidden="true">↗</span></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </section>
-    <!-- End of contact -->
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-top">
-        <div class="wordmark footer-wordmark" aria-hidden="true">
-          <span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span>
-        </div>
-        <div class="footer-list">
-          <a href="#home" class="footer-link">Home</a>
-          <a href="#offer" class="footer-link">Routes</a>
-          <a href="#stories" class="footer-link">Journals</a>
-          <a href="#contact" class="footer-link">Contact</a>
-        </div>
-      </div>
-      <p class="footer-paragraph">
-        Built by <a href="https://mutawakkil.vercel.app" target="_blank" rel="noopener noreferrer">Mutawakkil Yusuf</a>
-        &nbsp;·&nbsp; <a href="https://mutawakkil.vercel.app" target="_blank" rel="noopener noreferrer">View portfolio</a>
-        &nbsp;·&nbsp; Copyright &copy; 2026 — All Rights Reserved
-      </p>
-    </footer>
-    <!-- End of footer -->
+  <footer class="footer">
+    <div class="wordmark footer-wordmark" aria-hidden="true">
+      <span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span>
+    </div>
+    <div class="footer__links">
+      <a href="#home">Home</a><a href="#offer">Routes</a><a href="#stories">Journals</a><a href="#contact">Contact</a>
+    </div>
+    <p class="footer__note">
+      Built by <a href="https://mutawakkil.vercel.app" target="_blank" rel="noopener noreferrer">Mutawakkil Yusuf</a>
+      · <a href="https://mutawakkil.vercel.app" target="_blank" rel="noopener noreferrer">View portfolio</a>
+      · Copyright © 2026 — All Rights Reserved
+    </p>
+  </footer>
 
+  <div class="modal" id="reserveModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__panel">
+      <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+      <p class="eyebrow">Reserve your place</p>
+      <h3 id="modalTitle">The Wild Forest</h3>
+      <form id="reserveForm" novalidate>
+        <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+        <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+        <button type="submit" class="cta" data-spark><span>Request booking</span><span aria-hidden="true">↗</span></button>
+        <p class="form-status" id="reserveStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 
   <script src="app.js"></script>
 </body>
-
 </html>
