@@ -162,7 +162,7 @@
     for (let i = 0; i < 6; i++) {
       const dot = document.createElement('span')
       const angle = (Math.PI * 2 * i) / 6
-      dot.style.cssText = `position:fixed;z-index:190;pointer-events:none;width:5px;height:5px;border-radius:50%;background:#f2c787;left:${event.clientX}px;top:${event.clientY}px;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .7s;`
+      dot.style.cssText = `position:fixed;z-index:190;pointer-events:none;width:5px;height:5px;border-radius:50%;background:#ff7a5c;left:${event.clientX}px;top:${event.clientY}px;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .7s;`
       document.body.appendChild(dot)
       requestAnimationFrame(() => {
         dot.style.transform = `translate(${Math.cos(angle) * 42}px, ${Math.sin(angle) * 42}px)`
