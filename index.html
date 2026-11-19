@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="img/sky.webp" as="image" />
   <link rel="stylesheet" href="app.css" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
   <meta property="og:title" content="AVIORA — Discover Places. Plan Journeys. Go Further." />
@@ -19,6 +20,7 @@
   <title>AVIORA — Discover Places. Plan Journeys. Go Further.</title>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__mark"><span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span></div>
@@ -33,9 +35,10 @@
       <line x1="1" y1="0" x2="1" y2="0" class="route-rail-fill" id="railFill" />
     </svg>
     <a href="#home" class="route-stop is-active" data-target="home"><span class="route-stop-dot"></span><span class="route-stop-label">01 · Home</span></a>
-    <a href="#offer" class="route-stop" data-target="offer"><span class="route-stop-dot"></span><span class="route-stop-label">02 · Routes</span></a>
-    <a href="#stories" class="route-stop" data-target="stories"><span class="route-stop-dot"></span><span class="route-stop-label">03 · Journals</span></a>
-    <a href="#contact" class="route-stop" data-target="contact"><span class="route-stop-dot"></span><span class="route-stop-label">04 · Contact</span></a>
+    <a href="#map" class="route-stop" data-target="map"><span class="route-stop-dot"></span><span class="route-stop-label">02 · Map</span></a>
+    <a href="#offer" class="route-stop" data-target="offer"><span class="route-stop-dot"></span><span class="route-stop-label">03 · Routes</span></a>
+    <a href="#stories" class="route-stop" data-target="stories"><span class="route-stop-dot"></span><span class="route-stop-label">04 · Journals</span></a>
+    <a href="#contact" class="route-stop" data-target="contact"><span class="route-stop-dot"></span><span class="route-stop-label">05 · Contact</span></a>
   </nav>
 
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -46,17 +49,18 @@
     <p class="mono label">Where to next</p>
     <nav>
       <a href="#home"><span>01</span>Home</a>
-      <a href="#offer"><span>02</span>Routes</a>
-      <a href="#stories"><span>03</span>Journals</a>
-      <a href="#contact"><span>04</span>Contact</a>
+      <a href="#map"><span>02</span>Map</a>
+      <a href="#offer"><span>03</span>Routes</a>
+      <a href="#stories"><span>04</span>Journals</a>
+      <a href="#contact"><span>05</span>Contact</a>
     </nav>
     <p class="mono coords">36.75° N · 3.06° E</p>
   </div>
 
-  <main>
+  <main id="main">
     <header id="home" class="hero">
       <div class="hero__media" data-parallax="0.18">
-        <img src="img/sky.jpeg" alt="" class="hero__bg" />
+        <img src="img/sky.webp" alt="" class="hero__bg" />
       </div>
       <div class="hero__aurora" aria-hidden="true"></div>
       <div class="hero__pins" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -73,7 +77,7 @@
       </div>
 
       <div class="hero__balloon" data-parallax="-0.32" aria-hidden="true">
-        <img src="img/ballon-removebg-preview.png" alt="" />
+        <img src="img/ballon-removebg-preview.webp" alt="" />
       </div>
 
       <div class="wordmark" aria-hidden="true">
@@ -81,6 +85,34 @@
       </div>
       <a href="#offer" class="hero__scroll mono">Scroll to explore <span aria-hidden="true">↓</span></a>
     </header>
+
+    <section id="map" class="map-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 · The map</p>
+        <h2>Three lines on a<br>very big world</h2>
+      </div>
+      <div class="map reveal">
+        <svg class="map__land" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path d="M70 120c60-55 155-60 225-25 55 28 70 80 40 120-35 46-120 38-175 62-60 27-130 3-140-50-8-45 10-78 50-107z" />
+          <path d="M350 210c45-35 120-30 155 5 30 30 15 72-20 92-45 26-115 12-140-25-18-27-15-52 5-72z" />
+          <path d="M500 90c70-50 180-45 240 0 45 34 40 88-10 112-65 32-170 20-225-20-38-28-35-66-5-92z" />
+          <path d="M760 250c55-32 145-20 170 30 20 42-20 85-80 90-55 5-105-25-110-65-4-28 2-44 20-55z" />
+        </svg>
+        <svg class="map__path" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M230 150 Q430 60 590 155 T835 300" fill="none" stroke="#ff7a5c" stroke-width="3" stroke-dasharray="6 10" stroke-linecap="round" />
+        </svg>
+        <button class="map__pin" style="--x:23%;--y:34%" data-route="forest" aria-label="Show The Wild Forest route">
+          <span class="map__pin-head"></span><span class="map__pin-label">The Wild Forest</span>
+        </button>
+        <button class="map__pin" style="--x:59%;--y:35%" data-route="river" aria-label="Show Along the River route">
+          <span class="map__pin-head"></span><span class="map__pin-label">Along the River</span>
+        </button>
+        <button class="map__pin" style="--x:84%;--y:68%" data-route="beach" aria-label="Show The Island Beach route">
+          <span class="map__pin-head"></span><span class="map__pin-label">The Island Beach</span>
+        </button>
+        <p class="map__hint mono">Tap a pin to find your route</p>
+      </div>
+    </section>
 
     <section id="offer" class="routes">
       <div class="section-head reveal">
@@ -97,10 +129,10 @@
 
       <div class="cards">
         <article class="card reveal" data-category="forest">
-          <div class="card__media">
-            <img src="img/red.jpeg" alt="Dense wild forest canopy" />
+          <button class="card__media" data-details="forest" aria-label="View The Wild Forest details">
+            <img src="img/red.webp" alt="Dense wild forest canopy" loading="lazy" />
             <span class="card__tag">Difficulty · Medium</span>
-          </div>
+          </button>
           <div class="card__body">
             <p class="mono card__coords">36.40° N, 6.61° E</p>
             <h3>The Wild Forest</h3>
@@ -118,10 +150,10 @@
         </article>
 
         <article class="card reveal" data-category="river">
-          <div class="card__media">
-            <img src="img/amazon.jpeg" alt="River winding through dense jungle" />
+          <button class="card__media" data-details="river" aria-label="View Along the River details">
+            <img src="img/amazon.webp" alt="River winding through dense jungle" loading="lazy" />
             <span class="card__tag">Difficulty · Hard</span>
-          </div>
+          </button>
           <div class="card__body">
             <p class="mono card__coords">3.13° S, 60.02° W</p>
             <h3>Along the River</h3>
@@ -139,10 +171,10 @@
         </article>
 
         <article class="card reveal" data-category="beach">
-          <div class="card__media">
-            <img src="img/beach.jpeg" alt="Quiet island beach at golden hour" />
+          <button class="card__media" data-details="beach" aria-label="View The Island Beach details">
+            <img src="img/beach.webp" alt="Quiet island beach at golden hour" loading="lazy" />
             <span class="card__tag">Difficulty · Easy</span>
-          </div>
+          </button>
           <div class="card__body">
             <p class="mono card__coords">-8.65° S, 115.13° E</p>
             <h3>The Island Beach</h3>
@@ -162,7 +194,7 @@
     </section>
 
     <section id="stories" class="stories">
-      <div class="stories__media"><video autoplay muted loop playsinline><source src="img/video.mp4" type="video/mp4"></video></div>
+      <div class="stories__media"><video autoplay muted loop playsinline preload="none" poster="img/forest.webp"><source src="img/video.mp4" type="video/mp4"></video></div>
       <div class="stories__veil" aria-hidden="true"></div>
       <div class="section-head section-head--light reveal">
         <p class="eyebrow">03 · Journals</p>
@@ -170,7 +202,7 @@
       </div>
       <div class="stories__wrap">
         <figure class="story reveal">
-          <img src="img/person.jpeg" alt="Traveler portrait" />
+          <img src="img/person.webp" alt="Traveler portrait" loading="lazy" />
           <blockquote>
             <span aria-hidden="true">“</span>
             <h3>These were the best days of this year</h3>
@@ -179,7 +211,7 @@
           </blockquote>
         </figure>
         <figure class="story story--alt reveal">
-          <img src="img/person-2.jpeg" alt="Traveler portrait" />
+          <img src="img/person-2.webp" alt="Traveler portrait" loading="lazy" />
           <blockquote>
             <span aria-hidden="true">“</span>
             <h3>I enjoyed this great tour</h3>
@@ -214,7 +246,7 @@
       <span>a</span><span>v</span><span>i</span><span>o</span><span>r</span><span>a</span>
     </div>
     <div class="footer__links">
-      <a href="#home">Home</a><a href="#offer">Routes</a><a href="#stories">Journals</a><a href="#contact">Contact</a>
+      <a href="#home">Home</a><a href="#map">Map</a><a href="#offer">Routes</a><a href="#stories">Journals</a><a href="#contact">Contact</a>
     </div>
     <p class="footer__note">
       Built by <a href="https://mutawakkil.vercel.app" target="_blank" rel="noopener noreferrer">Mutawakkil Yusuf</a>
@@ -222,6 +254,22 @@
       · Copyright © 2026 — All Rights Reserved
     </p>
   </footer>
+
+  <div class="modal route-modal" id="routeModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="routeModalTitle">
+    <div class="modal__panel route-modal__panel">
+      <button class="modal__close" id="routeModalClose" aria-label="Close route details">✕</button>
+      <img class="route-modal__image" id="routeModalImage" alt="" />
+      <div class="route-modal__content">
+        <p class="eyebrow" id="routeModalEyebrow"></p>
+        <h3 id="routeModalTitle"></h3>
+        <p class="route-modal__desc" id="routeModalDesc"></p>
+        <h4 class="route-modal__sub">The plan</h4>
+        <ol class="route-modal__itinerary" id="routeModalItinerary"></ol>
+        <div class="route-modal__facts" id="routeModalFacts"></div>
+        <button class="cta" id="routeModalReserve"><span>Reserve this route</span><span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" id="reserveModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal__panel">
@@ -237,6 +285,7 @@
     </div>
   </div>
 
+  <script src="routes.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

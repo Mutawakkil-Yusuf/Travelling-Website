@@ -4,10 +4,11 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const $ = (selector, root = document) => root.querySelector(selector)
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)]
+  const routes = window.AVIORA_ROUTES ?? {}
 
   // Loader
   const loader = $('#loader')
-  window.setTimeout(() => loader?.classList.add('is-done'), reduced ? 200 : 1400)
+  window.setTimeout(() => loader?.classList.add('is-done'), reduced ? 200 : 1300)
 
   // Menu
   const menuToggle = $('#menuToggle')
@@ -71,12 +72,11 @@
   window.addEventListener('resize', updateScroll)
   updateScroll()
 
-  // Filters
+  // Filters — shared with map pins
   const filters = $$('.filter')
   const cards = $$('.card')
-  filters.forEach((button) => button.addEventListener('click', () => {
-    filters.forEach((f) => f.classList.toggle('is-active', f === button))
-    const value = button.dataset.filter
+  function applyFilter(value) {
+    filters.forEach((f) => f.classList.toggle('is-active', f.dataset.filter === value))
     cards.forEach((card) => {
       const show = value === 'all' || card.dataset.category === value
       card.classList.toggle('is-hidden', !show)
@@ -87,29 +87,56 @@
         )
       }
     })
+  }
+  filters.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)))
+  $$('.map__pin').forEach((pin) => pin.addEventListener('click', () => {
+    applyFilter(pin.dataset.route)
+    document.getElementById('offer')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' })
   }))
 
+  // Modal helpers
+  const reserveModal = $('#reserveModal')
+  const routeModal = $('#routeModal')
+  const syncLock = () => document.body.classList.toggle(
+    'is-locked',
+    Boolean(reserveModal?.classList.contains('is-open') || routeModal?.classList.contains('is-open')),
+  )
+  const focusables = (modal) => $$('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])', modal)
+    .filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null)
+  const trapFocus = (modal, event) => {
+    if (event.key !== 'Tab' || !modal?.classList.contains('is-open')) return
+    const items = focusables(modal)
+    if (!items.length) return
+    const first = items[0]
+    const last = items[items.length - 1]
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+  }
+  document.addEventListener('keydown', (event) => {
+    trapFocus(reserveModal, event)
+    trapFocus(routeModal, event)
+    if (event.key === 'Escape') { closeReserve(); closeRoute(); setMenu(false) }
+  })
+
   // Reserve modal
-  const modal = $('#reserveModal')
   const modalTitle = $('#modalTitle')
   const reserveStatus = $('#reserveStatus')
-  const openModal = (route) => {
+  function openReserve(route) {
     if (modalTitle) modalTitle.textContent = route
-    if (reserveStatus) reserveStatus.textContent = ''
-    modal?.classList.add('is-open')
-    modal?.setAttribute('aria-hidden', 'false')
-    document.body.classList.add('is-locked')
-    window.setTimeout(() => $('input', modal)?.focus(), 300)
+    if (reserveStatus) { reserveStatus.textContent = ''; reserveStatus.classList.remove('is-error') }
+    reserveModal?.classList.add('is-open')
+    reserveModal?.setAttribute('aria-hidden', 'false')
+    syncLock()
+    window.setTimeout(() => $('input', reserveModal)?.focus(), 250)
   }
-  const closeModal = () => {
-    modal?.classList.remove('is-open')
-    modal?.setAttribute('aria-hidden', 'true')
-    document.body.classList.remove('is-locked')
+  function closeReserve() {
+    reserveModal?.classList.remove('is-open')
+    reserveModal?.setAttribute('aria-hidden', 'true')
+    syncLock()
   }
-  $$('.card__reserve').forEach((button) => button.addEventListener('click', () => openModal(button.dataset.route)))
-  $('#modalClose')?.addEventListener('click', closeModal)
-  modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal() })
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { closeModal(); setMenu(false) } })
+  $$('.card__reserve').forEach((button) => button.addEventListener('click', () => openReserve(button.dataset.route)))
+  $('#modalClose')?.addEventListener('click', closeReserve)
+  reserveModal?.addEventListener('click', (event) => { if (event.target === reserveModal) closeReserve() })
 
   $('#reserveForm')?.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -125,6 +152,58 @@
     reserveStatus.textContent = 'Request received. We will map the details and be in touch.'
     form.reset()
   })
+
+  // Route detail views with hash support
+  const routeModalImage = $('#routeModalImage')
+  const routeModalEyebrow = $('#routeModalEyebrow')
+  const routeModalTitle = $('#routeModalTitle')
+  const routeModalDesc = $('#routeModalDesc')
+  const routeModalItinerary = $('#routeModalItinerary')
+  const routeModalFacts = $('#routeModalFacts')
+
+  function fillRoute(key) {
+    const data = routes[key]
+    if (!data) return false
+    if (routeModalImage) { routeModalImage.src = data.image; routeModalImage.alt = data.alt ?? '' }
+    if (routeModalEyebrow) routeModalEyebrow.textContent = data.eyebrow
+    if (routeModalTitle) routeModalTitle.textContent = data.title
+    if (routeModalDesc) routeModalDesc.textContent = data.desc
+    if (routeModalItinerary) routeModalItinerary.innerHTML = data.itinerary.map((item) => `<li>${item}</li>`).join('')
+    if (routeModalFacts) routeModalFacts.innerHTML = data.facts.map(([label, value]) => `<div><span>${label}</span><span>${value}</span></div>`).join('')
+    return true
+  }
+  function openRoute(key, updateHash = true) {
+    if (!fillRoute(key)) return
+    routeModal?.classList.add('is-open')
+    routeModal?.setAttribute('aria-hidden', 'false')
+    syncLock()
+    window.setTimeout(() => $('#routeModalClose')?.focus(), 200)
+    if (updateHash) window.history.pushState({ route: key }, '', `#route/${key}`)
+  }
+  function closeRoute(updateHash = true) {
+    if (!routeModal?.classList.contains('is-open')) return
+    routeModal.classList.remove('is-open')
+    routeModal.setAttribute('aria-hidden', 'true')
+    syncLock()
+    if (updateHash && location.hash.startsWith('#route/')) {
+      window.history.pushState(null, '', location.pathname + location.search)
+    }
+  }
+  $$('[data-details]').forEach((button) => button.addEventListener('click', () => openRoute(button.dataset.details)))
+  $('#routeModalClose')?.addEventListener('click', () => closeRoute())
+  routeModal?.addEventListener('click', (event) => { if (event.target === routeModal) closeRoute() })
+  $('#routeModalReserve')?.addEventListener('click', () => {
+    const title = routeModalTitle?.textContent ?? 'Route'
+    closeRoute()
+    openReserve(title)
+  })
+  window.addEventListener('popstate', () => {
+    const match = location.hash.match(/^#route\/(.+)$/)
+    if (match && routes[match[1]]) openRoute(match[1], false)
+    else closeRoute(false)
+  })
+  const initial = location.hash.match(/^#route\/(.+)$/)
+  if (initial && routes[initial[1]]) openRoute(initial[1], false)
 
   // Contact form
   const contactForm = $('#contactForm')
